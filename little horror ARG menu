@@ -1,0 +1,288 @@
+var x = 160
+var y = 116
+var opcao = 1
+var tela = 0
+var bolinha = false
+var Con = 0
+var Senha = false
+var inputPass = String
+var Resposta = 0
+
+//video explicando o código://
+//www.youtube.com/watch?v=jMAbIAByJ5Y//
+
+function setup() {
+  createCanvas(500,500);
+  Carinha = loadImage("Ibagens/Carinha.jpg")
+  Eu = loadImage('Ibagens/Eu.jpg')
+  Recepcionista = loadImage('Ibagens/N.jpg')
+  Reuniao = loadImage('Ibagens/Reuniao.jpg')
+  Jogador = loadImage('Ibagens/Jogador.jpg')
+  Fim = loadImage('Ibagens/Fim.jpg')
+  WiiTheme = createAudio('Audio/WiiTheme.mp3')
+  WiiTheme.autoplay(true);
+  WiiTheme.volume(1);
+  WiiTheme.size(500,500);
+}
+
+function mouseClicked(){
+  Click = createAudio('Audio/Click.mp3')
+  Click.autoplay(true)
+  Click.volume(1)
+  Click.size(500,500)
+  if(tela==0){
+  if(mouseX>=160 && mouseX<=326 && mouseY>=115 && mouseY<=158)
+    tela = tela+1
+  if(mouseX>=160 && mouseX<=326 && mouseY>=215 && mouseY<=258)
+    tela = tela+2
+  if(mouseX>=160 && mouseX<=326 && mouseY>=315 && mouseY<=358)
+    tela = tela+3
+  }
+  if(tela==3||tela==2){
+    if(mouseX>=323 && mouseX<=481 && mouseY>=446 && mouseY<=490){
+      tela=0
+    }
+  }
+  if(tela==1){
+    if(mouseX>=323 && mouseX<=481 && mouseY>=446 && mouseY<=490){
+      tela=0
+    }
+    if(mouseX>=250 && mouseX<=259 && mouseY>=236 && mouseY<=244){
+      tela=4
+    }
+  }
+  if(tela==4){
+    if(mouseX>=170 && mouseX<=336 && mouseY>=355 && mouseY<= 374){
+      Resposta = prompt('Um desejo, uma resposta')
+      alert(Resposta)
+    }
+  }
+
+}
+
+function draw() {
+  background(220);
+  if(tela==0){
+    menu()
+  }
+  if(tela==1){
+    jogo()
+  }
+  if(tela==2)
+    tutorial()
+  if(tela==3)
+    creditos()
+  if(tela==4){
+    enigma()
+  }
+  if(tela==6){
+    final();
+  }
+}
+
+function menu(){
+  stroke(0,0,0)
+  fill(255, 255, 255)
+  rect(x, y, 170, 45)
+  fill(0,0,0)
+    if(mouseX>=160 && mouseX<=326 && mouseY>=115 && mouseY<=158){
+      y = 116
+    }
+    if(mouseX>=160 && mouseX<=326 && mouseY>=215 && mouseY<=258)
+      y = 215
+    if(mouseX>=160 && mouseX<=326 && mouseY>=315 && mouseY<=358){
+      y = 315
+    }
+  fill(255,255,255)
+  circle(x, y, 10)
+  circle(x+170, y+45, 10)
+  circle(x, y+45, 10)
+  circle(x+170, y, 10)
+  fill(0,0,0)
+  
+  textSize (40);
+  text('GAMER UNIVERSITÁRIO', 18, 55)
+  
+  textSize (35)
+  text('Jogar!', 195, 150)
+  text('Tutorial', 185, 250)
+  text('Créditos', 185, 350)
+  
+  textSize(13)
+  text('Jogo de alta dificuldade, contraindicado em caso de casuais.', 5, 490)
+  
+  WiiTheme.volume(1);
+}
+
+function jogo(){
+  textSize(40)
+  stroke('#000')
+  text('BRINCADEIRA!!', 25, 55)
+  text('Universitário não joga', 25, 155)
+  text('Vá estudar :D', 25, 255)
+  text('Tu tem prova', 25, 355)
+  text('KKKKKKKKKK', 25, 455)
+  if (bolinha == true) {
+      fill(255,0,0)
+      circle(255, 241, 10)
+      fill(0,0,0)
+    
+  }
+    
+  fill(255,255,255)
+  rect(323,447,160,45)
+  fill(0,0,0)
+  
+  textSize(38)
+  text('Voltar', 333, 482)
+  fill(0,0,0)
+  circle(460, 470, 16)
+  fill(0,0,0)
+  
+  if(mouseX >= 247 && mouseX <= 260 && mouseY >= 230 && mouseY <= 250){
+    bolinha = true
+  }else{
+    bolinha = false
+  }
+}
+
+function tutorial(){
+  textSize(40)
+  stroke('#000')
+  text('TUTORIAL', 25, 55)
+  text('É', 25, 155)
+  text('PARA', 25, 255)
+  text('CASUAIS', 25, 355)
+  text('>:C', 25, 455)
+  
+  fill(255,255,255)
+  rect(323,447,160,45)
+  fill(0,0,0)
+  
+  textSize(38)
+  text('Voltar', 333, 482)
+  fill(0,0,0)
+  circle(460, 470, 16)
+  fill(0,0,0)
+  
+  textSize(10)
+  text('byB2ZXJkYWRlaXJvIGRlc2VqbyDDqSBvIGRlIGFzY2VuZGVy', 5, 490)
+    if(mouseX>=322 && mouseX<=482 && mouseY>=446 && mouseY<=490){
+    image(Recepcionista, 80, 70)
+    
+    textSize(30)
+    fill(200, 0, 0)
+    text('Siga os códigos', 150, 360)
+    text('Pequeno cordeiro', 140, 400)
+    
+    textSize(10)
+      text('base64', 5, 480)
+    fill(0,0,0)
+      
+    WiiTheme.volume(0)
+  }else{
+    WiiTheme.volume(1);
+  }
+}
+
+function creditos(){
+  
+  background(Eu)
+  
+  fill(255, 255, 255)
+  rect(5, 1, 385, 60)
+  fill(0,0,0)
+  
+  textSize(28)
+  text('Alexandre Lyra Melo dos Reis', 10, 25)
+  text('ECT/UFRN', 10, 55)
+  
+  fill(255,255,255)
+  rect(323, 447, 160, 45)
+  fill(0,0,0)
+  
+  textSize(38)
+  text('Voltar', 333, 482)
+  fill(0,0,0)
+  circle(460, 470, 16)
+  fill(0,0,0)
+  
+  textSize(10)
+  text('ZGVzY29uZmllIGRlIHNvcnJpc29zIGFsaGVpb3M=', 5, 490)
+}
+
+function enigma(){
+  background(0,0,0)
+  image(Reuniao, 75, 75)
+  
+  textSize(21)
+  fill(200, 0, 0)
+  text('Se acha o esperto, não é? Procura um jogo?', 35, 60)
+  fill(0,0,0)
+  fill(200,0,0)
+  text('Me diga o que você deseja mais profundamente', 21, 85)
+  
+  if(Con == 1){
+    inputPass = createButton('Um desejo, uma resposta')
+    inputPass.position(170, 355)
+    Con = Con + 1
+  }
+  if(tela==4){
+    Con = Con + 1
+  }
+  if(Resposta == 'ascender'){
+    tela = 6
+    removeElements()
+  }
+  if(Resposta != 'ascender' && Resposta != ''){
+    alert('Suma daqui, falso seguidor')
+  }
+  WiiTheme.volume(0)
+}
+
+function final(){
+  background(0,0,0)
+  image(Fim, 0, -70)
+  textSize(30)
+  stroke(255,0,0)
+  fill(255,0,0)
+  text('O jogo começou', 135, 40)
+  text('Não desligue as luzes de noite', 50, 70)
+  Finale = createAudio('Audio/Finale.mp3')
+  Finale.autoplay(true)
+  Finale.volume(1)
+  Finale.size(500,500)
+  }
+
+function keyPressed(){
+  Seta = createAudio('Audio/Seta.mp3')
+  Seta.volume(1)
+  Seta.autoplay(true)
+  Seta.size(500,500)
+  if(key=="ArrowUp" && y > 150){
+    y = y-100
+    opcao = opcao - 1
+  }
+  if(key=="ArrowDown" && y < 300){
+    y = y+100
+    opcao = opcao + 1
+  }
+  if(key=="Enter" && opcao==1){
+    tela = tela+1
+  }
+  if(key=="Enter" && opcao==2){
+    tela = tela+2
+  }
+  if(key=="Enter" && opcao==3){
+    tela = tela+3
+  }
+  if(key=='Escape' && tela == 4){
+    inputPass.remove()
+    tela = 0
+    Con = 0
+  }
+  if(key=='Escape'&&tela==1 || key == 'Escape' && tela == 2 || key == 'Escape' && tela == 6 || key == 'Escape' && tela == 3){
+    tela = 0
+    Con = 0
+  }
+}
